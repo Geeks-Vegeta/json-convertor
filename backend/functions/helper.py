@@ -1,7 +1,5 @@
 import re
 
-ALLOWED_EXTENSIONS = ['csv', 'xlxs']
-
 def convert_to_array_or_dict(cell_value):
     if isinstance(cell_value, str):
         # Check for square brackets '[ ]'
@@ -24,7 +22,7 @@ def convert_to_array_or_dict(cell_value):
             return elements
     return cell_value
 
-def allowed_file(filename: str) -> bool:
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+def allowed_file(filename: str, extenstion:str) -> bool:
+    return '.' in filename and filename.rsplit('.', 1)[1].lower()==extenstion
 
 

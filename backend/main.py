@@ -32,15 +32,13 @@ app = FastAPI(
     },
 )
 
-
 @app.get("/")
 async def home():
-  return {"status":"ok"}
-
+    return {"status":"ok"}
 
 app.include_router(csv_route.router)
 app.include_router(xlxs_route.router)
 
 
 if __name__ == "__main__":
-  uvicorn.run("main:app",host="0.0.0.0",port=80, reload=True)
+    uvicorn.run("main:app",host="0.0.0.0",port=80, reload=True)
