@@ -58,12 +58,16 @@ async def upload(file: Annotated[UploadFile, File(description="upload a xlxs fil
 
 @router.get("/processed-data")
 async def get_processed_data():
-    processed_data = processed_data_storage.get(processed_data_key)
-    if processed_data:
-        headers = {
-        "Content-Disposition": f"attachment; filename={fileName}"
-        }
-        return StreamingResponse(processed_data,media_type="application/octet-stream", headers=headers)
-    else:
+    try:
+        processed_data = processed_data_storage.get(processed_data_key)
+        if processed_data:
+            headers = {
+            "Content-Disposition": f"attachment; filename={fileName}"
+            }
+            return StreamingResponse(processed_data,media_type="application/octet-stream", headers=headers)
+        else:
+            return {"status":"pending"}
+    except Exception as e:
         return {"error": "Processed data not found"}
+
    
