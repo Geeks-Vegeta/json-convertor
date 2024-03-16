@@ -22,7 +22,7 @@ def convert_to_array_or_dict(cell_value):
             return elements
     return cell_value
 
-def allowed_file(filename: str, extenstion:str) -> bool:
-    return '.' in filename and filename.rsplit('.', 1)[1].lower()==extenstion
+def allowed_file(filename: str, extenstion:list) -> bool:
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in extenstion
 
 
