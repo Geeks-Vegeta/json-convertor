@@ -6,7 +6,7 @@ import traceback
 from functions.convertor import convert_excel_to_bson
 router = APIRouter(
     prefix="/convert/xlsx",
-    tags=["bson"],
+    tags=["xlsx"],
 )
 
 # # Global dictionary to store processed data
@@ -56,7 +56,7 @@ async def upload(file: Annotated[UploadFile, File(description="upload a xlxs fil
         raise HTTPException(status_code=500, detail=f"Error processing file: {e}")
 
 
-@router.get("/processed-data")
+@router.get("/processed-data-xlsx")
 async def get_processed_data():
     try:
         processed_data = processed_data_storage.get(processed_data_key)
