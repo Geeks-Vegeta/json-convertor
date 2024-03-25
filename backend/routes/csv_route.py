@@ -44,7 +44,7 @@ async def upload(file: Annotated[UploadFile, File(description="upload a xlxs fil
    try:
         file_content = await file.read()
         global fileName
-        fileName = f"{file.filename.split(".")[0]}.json"
+        fileName = file.filename.split(".")[0] + ".json"
 
         background_tasks.add_task(process_file, file_content)
         return {"message": "File is being processed in the background. It will be available shortly."}
