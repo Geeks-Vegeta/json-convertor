@@ -29,7 +29,7 @@ async def upload(file: Annotated[UploadFile, File(description="upload a xlxs fil
     if not allowed_file(file.filename,["xlsx","xls"]):
         raise HTTPException(status_code=400, detail="File type not allowed")
     try:
-      fileName = f"{file.filename.split(".")[0]}.json"
+      fileName = file.filename.split(".")[0] + ".json"
       headers = {
         "Content-Disposition": f"attachment; filename={fileName}"
     }
